@@ -5,10 +5,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    label {
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
-  hello world123
+  <label for="x">
+    星星数<input type="text" id="x">
+  </label>
+  <label for="atk">
+    攻击力<input type="text" id="atk">
+  </label>
+  <label for="atk0">
+    基础攻击力<input type="text" id="atk0">
+  </label>
+  <label for="times">
+    强化次数<input type="text" id="times">
+  </label>
+  <button onclick="cab()">计算痕迹</button>
+  <p>平均痕迹：<span id="result"></span></p>
+  <script>
+    function cab() {
+      var x = document.getElementById('x').value; //星星数
+      var atk = document.getElementById('atk').value; //武器攻击力
+      var atk0 = document.getElementById('atk0').value; //武器原始攻击力
+      var times = document.getElementById('times').value;
+      var j = Math.floor(atk / 50) + 1
+      for (var i = 0; i < x; i++) {
+        j = j < atk % 50 ? j : j - 1
+        atk = atk - j
+        console.log(j);
+      }
+      var result = (atk - atk0) / times
+      document.getElementById('result').innerHTML = result
+    }
+  </script>
 </body>
 
 </html>
